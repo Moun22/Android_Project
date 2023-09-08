@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bd_nav"
+    app:startDestination="@id/listFragment">
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="fr.uparis.projetmobile.fragments.list.ListFragment"
+        android:label="Liste des plantes"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_listFragmentToday"
+            app:destination="@id/listFragmentToday" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="fr.uparis.projetmobile.fragments.add.AddFragment"
+        android:label="Ajouter une plante"
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="fr.uparis.projetmobile.fragments.update.UpdateFragment"
+        android:label="Modifier une plante"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/listFragment" />
+        <argument
+            android:name="currentPlante"
+            app:argType="fr.uparis.projetmobile.model.Plante" />
+    </fragment>
+    <fragment
+        android:id="@+id/listFragmentToday"
+        android:name="fr.uparis.projetmobile.fragments.list.ListFragmentToday"
+        android:label="Plante à arroser ajourd'hui"
+        tools:layout="@layout/fragment_list_today">
+        <action
+            android:id="@+id/action_listFragmentToday_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/listFragment" />
+    </fragment>
+</navigation>
